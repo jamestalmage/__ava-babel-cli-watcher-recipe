@@ -1,0 +1,73 @@
+{
+  "name": "ava-babel-helpers",
+  "version": "0.0.0",
+  "description": "My great module",
+  "license": "MIT",
+  "repository": "avajs/ava-babel-helpers",
+  "author": {
+    "name": "James Talmage",
+    "email": "james@talmage.io",
+    "url": "github.com/jamestalmage"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "npm-run-all clean lint build cover",
+    "watch": "npm-run-all clean build --parallel watch:*",
+    "prepublish": "npm test",
+    "clean": "rimraf *.js lib",
+    "lint": "xo",
+    "build": "babel --out-dir=. src",
+    "cover": "nyc ava",
+    "watch:babel": "babel --watch --out-dir=. src",
+    "watch:ava": "ava --watch"
+  },
+  "files": [
+    "*.js",
+    "lib"
+  ],
+  "keywords": [
+    ""
+  ],
+  "dependencies": {
+    "babel-runtime": "^6.9.0"
+  },
+  "devDependencies": {
+    "ava": "^0.14.0",
+    "babel-cli": "^6.9.0",
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-3": "^6.5.0",
+    "coveralls": "^2.11.9",
+    "npm-run-all": "^2.1.0",
+    "nyc": "^6.4.0",
+    "rimraf": "^2.5.2",
+    "xo": "^0.15.0"
+  },
+  "ava": {
+    "source": [
+      "!src/**"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-3"
+    ],
+    "plugins": [
+      "transform-runtime"
+    ],
+    "sourceMaps": "both"
+  },
+  "nyc": {
+    "reporter": [
+      "lcov",
+      "text"
+    ]
+  },
+  "xo": {
+    "ignores": "*.js",
+    "esnext": true
+  }
+}
