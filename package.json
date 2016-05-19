@@ -13,13 +13,12 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "npm-run-all clean lint build cover",
+    "pretest": "npm run clean && xo && npm run build",
+    "test": "nyc ava",
     "watch": "npm-run-all clean build --parallel watch:*",
     "prepublish": "npm test",
     "clean": "rimraf *.js lib",
-    "lint": "xo",
     "build": "babel --out-dir=. src",
-    "cover": "nyc ava",
     "watch:babel": "babel --watch --out-dir=. src",
     "watch:ava": "ava --watch"
   },
